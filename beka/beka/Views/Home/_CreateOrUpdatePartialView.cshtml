@@ -1,0 +1,52 @@
+﻿
+@model beka.Models.Departament
+
+<form name="departamentForm">
+    @Html.AntiForgeryToken();
+    <div class="modal-header">
+        <h4 class="modal-title">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @*<span>@(Model.Id > 0 ? "Update Departament : Create New Departament")</span>*@
+            <span>Create</span>
+
+        </h4>
+
+    </div>
+    <div class="modal-body">
+        @Html.HiddenFor(c=>c.Id)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Name,htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.Name, new { htmlAttributes= new { @class = "form-control", required = true } })
+                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Code, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.Code, new { htmlAttributes = new { @class = "form-control", required = true } })
+                        @Html.ValidationMessageFor(x => x.Code, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Note, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(x => x.Note, new { htmlAttributes = new { @class = "form-control", required = true } })
+                        @Html.ValidationMessageFor(x => x.Note, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm pull-left" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-sm pull-left" onclick="createOrUpdate()">Save</button>
+    </div>
+
+</form>
